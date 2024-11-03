@@ -5,6 +5,8 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 
 const API_KEY = 'API_KEY';
+const MAX_TOKENS_DEFAULT_VALUE = 4096;
+
 
 interface TextMessageContent {
 	type: 'text';
@@ -107,7 +109,7 @@ async function main(
 	settings: Record<string, unknown>,
 ) {
 	const total = prompts.length;
-	const { prompt, ...restProperties } = properties;
+	const { prompt, max_tokens, ...restProperties } = properties;
 	const anthropic = new Anthropic({ apiKey: settings?.[API_KEY] as string });
 	const systemPrompt = (prompt ||
 		config.properties.find((prop) => prop.id === 'prompt')?.value) as string;
@@ -143,7 +145,7 @@ async function main(
 					response = (await anthropic.messages.create({
 						model: model,
 						system: systemPrompt,
-						max_tokens: 4096,
+						max_tokens: max_tokens as number ?? MAX_TOKENS_DEFAULT_VALUE,
 						messages: messageHistory,
 						...restProperties,
 					})) as AnthropicResponse;

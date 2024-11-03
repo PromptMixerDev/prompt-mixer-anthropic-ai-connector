@@ -25,6 +25,12 @@ export const config = {
 			value: 'You are a helpful assistant.',
 			type: 'string',
 		},
+		{
+			id: 'max_tokens',
+			name: 'Max Tokens',
+			value: 4096,
+			type: 'number',
+		  },
 	],
 	settings: [{ id: 'API_KEY', name: 'API Key', value: '', type: 'string' }],
 	author: 'Prompt Mixer',
