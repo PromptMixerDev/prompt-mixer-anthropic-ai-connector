@@ -165,6 +165,7 @@ const mapErrorToCompletion = (error: any, model: string): ErrorCompletion => {
 interface MCPServerConfig {
 	command: string;
 	args: string[];
+	env?: Record<string, string>;
 }
 
 interface MCPClient {
@@ -180,9 +181,12 @@ async function initializeMCPClients(mcpServers: Record<string, MCPServerConfig>)
 	const clients: Record<string, MCPClient> = {};
 	for (const [serverName, serverConfig] of Object.entries(mcpServers)) {
 		const client = new Client({ name: `mcp-client-${serverName}`, version: "1.0.0" });
-		const transport = new StdioClientTransport({
-			command: serverConfig.command,
-			args: serverConfig.args,
+		const transport = new StdioClientTransport({			
+			...serverConfig,
+      env: {
+        ...serverConfig.env,
+        PATH: process.env.PATH ?? ''
+      }
 		});
 		await client.connect(transport);
 		const toolsResult = await client.listTools();
