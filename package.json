@@ -27,7 +27,7 @@
 		"dotenv": "^16.4.7",
 		"esbuild": "^0.25.3",
 		"eslint": "^9.26.0",
-		"eslint-config-prettier": "^10.1.1",
+		"eslint-config-prettier": "^10.1.5",
 		"eslint-plugin-prettier": "^5.3.1",
 		"prettier": "^3.5.3",
 		"tslib": "^2.8.1",
