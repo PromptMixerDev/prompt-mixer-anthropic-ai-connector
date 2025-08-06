@@ -16,7 +16,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@anthropic-ai/sdk": "^0.56.0",
+		"@anthropic-ai/sdk": "^0.57.0",
 		"@modelcontextprotocol/sdk": "^1.17.0"
 	},
 	"devDependencies": {
