@@ -17,7 +17,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"@anthropic-ai/sdk": "^0.71.2",
-		"@modelcontextprotocol/sdk": "^1.25.1"
+		"@modelcontextprotocol/sdk": "^1.25.2"
 	},
 	"devDependencies": {
 		"@types/node": "^25.0.6",
